@@ -1,0 +1,16 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+<!-- ジョブの設定画面で表示される設定フォーム -->
+    <f:entry title="${%Name}" field="name">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%Value}" field="value">
+        <f:textbox />
+    </f:entry>
+    <j:if test="${!noDeleteButton}">
+    <f:entry title="">
+        <div align="right">
+            <f:repeatableDeleteButton value="${%Delete Variable}"/>
+        </div>
+    </f:entry>
+    </j:if>
+</j:jelly>

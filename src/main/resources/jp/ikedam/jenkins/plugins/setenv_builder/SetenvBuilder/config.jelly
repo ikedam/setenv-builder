@@ -1,0 +1,28 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+<!-- ジョブの設定画面で表示される設定フォーム -->
+    <f:dropdownList title="${%Setenv Config}" name="setenvConfig" help="${descriptor.getHelpFile('setenvConfig')}">
+        <j:forEach
+                var="curDescriptor"
+                items="${descriptor.setenvConfigList}"
+                varStatus="loop">
+            <j:scope>
+            <j:set
+                var="setenvConfig"
+                value="${curDescriptor==instance.setenvConfig.descriptor?instance.setenvConfig:null}"
+            />
+            <f:dropdownListBlock
+                title="${curDescriptor.displayName}"
+                value="${loop.index}"
+                selected="${setenvConfig != null}"
+                staplerClass="${curDescriptor.clazz.name}"
+            ><j:scope>
+                <!-- 各SetenvConfigが選択されている場合にのみ表示される。 -->
+                <j:set var="descriptor" value="${curDescriptor}" />
+                <j:set var="instance" value="${setenvConfig}" />
+                <!-- 各SetenvConfigが提供しているconfig.jellyを描画する。ない場合は何もしない -->
+                <st:include page="config.jelly" class="${curDescriptor.clazz}" optional="${true}" />
+            </j:scope></f:dropdownListBlock>
+            </j:scope>
+        </j:forEach>
+    </f:dropdownList>
+</j:jelly>

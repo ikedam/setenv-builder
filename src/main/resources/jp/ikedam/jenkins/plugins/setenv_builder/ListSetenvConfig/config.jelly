@@ -1,0 +1,14 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <!--
+        ビルド処理の設定で使用されるされる設定ビュー。
+        SetenvBuilderのビューから呼び出される。
+        実際にはループ処理のみ行い、具体的な入力処理はSetenvEntryのビューで行う。
+    -->
+    <f:block>
+        <f:repeatableProperty
+            field="setenvEntryList"
+            add="${%Add New Variable}"
+            header="${descriptor.displayName}"
+        />
+    </f:block>
+</j:jelly>
