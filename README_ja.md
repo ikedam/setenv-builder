@@ -31,7 +31,6 @@ public abstract String JobcopyOperation::perform(String xmlString, String encodi
 
 ```java
 public void AbstractSetenvConfig::setSetenvEntryList(List<SetenvEntry> setenvEntryList);
-
 ```
 
 TODO
