@@ -30,6 +30,7 @@ public abstract class AbstractSetenvConfig extends SetenvConfig
     /**
      * 追加で定義する変数のマップを返す。
      */
+    @Override
     public Map<String, String> getEnvMap(EnvVars env, PrintStream logger)
     {
         Map<String, String> envMap = new HashMap<String, String>();
